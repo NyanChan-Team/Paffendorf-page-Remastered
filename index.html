@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Paffendorf</title>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            margin: 0;
+        }
+        .flash-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+        }
+        h2 {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="flash-container">
+        <script>
+            window.addEventListener("DOMContentLoaded", () => {
+                let ruffle = window.RufflePlayer.newest();
+                let player = ruffle.createPlayer();
+                player.style.width = "320px";
+                player.style.height = "240px";
+                document.querySelector(".flash-container").appendChild(player);
+                player.load("/flash/paffendorf.swf");
+                
+                // プレーヤーがロードされた後に文字を表示
+                let title = document.createElement('h2');
+                title.textContent = 'Paffendorf!';
+                document.querySelector(".flash-container").appendChild(title);
+            });
+        </script>
+    </div>
+</body>
+</html>
